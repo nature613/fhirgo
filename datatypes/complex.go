@@ -12,6 +12,62 @@ type Attachment struct {
 	Creation    DateTime     `json:"creation"`
 }
 
+// NewAttachment returns a valid Attachment
+func NewAttachment(contentType, language, data, url, size, hash, title, creation interface{}) (Attachment, error) {
+	a := Attachment{}
+
+	ct, err := NewCode(contentType)
+	if err != nil {
+		return a, err
+	}
+
+	lang, err := NewCode(language)
+	if err != nil {
+		return a, err
+	}
+
+	d, err := NewBase64Binary(data)
+	if err != nil {
+		return a, err
+	}
+
+	u, err := NewURL(url)
+	if err != nil {
+		return a, err
+	}
+
+	s, err := NewUnsignedInt(size)
+	if err != nil {
+		return a, err
+	}
+
+	h, err := NewBase64Binary(hash)
+	if err != nil {
+		return a, err
+	}
+
+	t, err := NewString(title)
+	if err != nil {
+		return a, err
+	}
+
+	c, err := NewDateTime(creation)
+	if err != nil {
+		return a, err
+	}
+
+	a.ContentType = ct
+	a.Language = lang
+	a.Data = d
+	a.URL = u
+	a.Size = s
+	a.Hash = h
+	a.Title = t
+	a.Creation = c
+
+	return a, nil
+}
+
 // Coding FHIR type
 type Coding struct {
 	System       URI     `json:"system"`
@@ -19,6 +75,12 @@ type Coding struct {
 	Code         Code    `json:"code"`
 	Display      String  `json:"display"`
 	UserSelected Boolean `json:"userSelected"`
+}
+
+// NewCoding returns a valid Coding
+func NewCoding() (Coding, error) {
+
+	return Coding{}, nil
 }
 
 // CodeableConcept FHIR Type
