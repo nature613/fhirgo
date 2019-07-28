@@ -29,7 +29,7 @@ type PatientLink struct {
 
 // Patient resource
 type Patient struct {
-	ResourceType         string                 `json:"resourceType"`
+	Domain
 	Identifier           []d.Identifier         `json:"identifier"`
 	Active               d.Boolean              `json:"active"`
 	Name                 []d.HumanName          `json:"name"`
@@ -52,7 +52,12 @@ type Patient struct {
 
 // NewPatient returns a valid Patient resource
 func NewPatient() (Patient, error) {
-	p := Patient{ResourceType: "Patient"}
+	d, err := NewDomain("Patient")
+	if err != nil {
+		return Patient{}, nil
+	}
+	p := Patient{}
+	p.Domain = d
 
 	return p, nil
 }
