@@ -18,7 +18,45 @@ var (
 	// ErrInvalidIntegerInput is returned when the given input is not a valid integer
 	ErrInvalidIntegerInput = errors.New("Invalid integer value given as input")
 	// ErrInvalidIntegerRange is returned when the given input is not in valid range
-	ErrInvalidIntegerRange = errors.New("Integer value is out of range")
+	ErrInvalidIntegerRange = errors.New("Integer value is out of range. Must be between -2,147,483,648 and 2,147,483,647")
+	// ErrInvalidStringInput is returned when the given input is not a valid string
+	ErrInvalidStringInput = errors.New("Invalid string value is given as input")
+	// ErrInvalidStringLength is returned when the given string length is greater than 1024*1024
+	ErrInvalidStringLength = errors.New("String length is out of range. Should be less than 1MB")
+	// ErrInvalidDecimalInput is returned when the given input is not a valid float/decimal
+	ErrInvalidDecimalInput = errors.New("Invalid decimal value given as input")
+	// ErrInvalidDecimalRange is returned when decimal value is out of range
+	ErrInvalidDecimalRange = errors.New("Decimal value is out of range")
+	// ErrInvalidURI is returned when URI parsing failed
+	ErrInvalidURI = errors.New("Invalid URI given as input")
+	// ErrInvalidURL is returned when URL parsing failed
+	ErrInvalidURL = errors.New("Invalid URL given as input")
+	// ErrInvalidURLScheme is returned when protocol/scheme is empty
+	ErrInvalidURLScheme = errors.New("A valid URL must have the protocol defined, it cannot be empty")
+	// ErrInvalidURLHost is returned when host is empty
+	ErrInvalidURLHost = errors.New("A valid host must be present")
+	// ErrInvalidByteInput is returned when the input is not a valid byte slice
+	ErrInvalidByteInput = errors.New("Invalid bytes as input")
+	// ErrInvalidDateTimeInput is returned when the datetime format is not right
+	ErrInvalidDateTimeInput = errors.New("A valid datetime format needed with timezone, e.g. 2015-02-07T13:28:17-05:00")
+	// ErrInvalidDateInput is returned when the date format is not right
+	ErrInvalidDateInput = errors.New("A valid date format needed with NO timezone, e.g. 2018, 1973-06, or 1905-08-23")
+	// ErrInvalidTimeInput is returned when the time format is not right
+	ErrInvalidTimeInput = errors.New("A valid time format needed with NO timezone, e.g. 13:28:17, 01:28:17PM")
+	// ErrInvalidOIDInput is returned when the OID format is not right
+	ErrInvalidOIDInput = errors.New("A valid OID is needed. It should start with `urn:oid:`, e.g. urn:oid:1.2.3.4.5")
+	// ErrInvalidIDInput is returned when the ID format is not right
+	ErrInvalidIDInput = errors.New("A valid ID required. 'A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters")
+	// ErrInvalidUnsignedIntRange is returned when the unsigned int is out of range
+	ErrInvalidUnsignedIntRange = errors.New("Unsigned Integer value is out of range. Must be between 0 and 2,147,483,647")
+	// ErrInvalidPositiveIntRange is returned when the
+	ErrInvalidPositiveIntRange = errors.New("Positive Integer value is out of range. Must be between 1 and 2,147,483,647")
+	// ErrInvalidUUIDInput is returned when the UUID is invalid
+	ErrInvalidUUIDInput = errors.New("A valid UUID must be present, should start with `urn:uuid:`")
+	// ErrInvalidUUIDFormat is returned when the
+	ErrInvalidUUIDFormat = errors.New("Invalid UUID format")
+	// ErrInvalidUUIDGeneration is returned when the
+	ErrInvalidUUIDGeneration = errors.New("Unable to generate UUID")
 )
 
 // Boolean FHIR type
@@ -58,11 +96,10 @@ type String string
 func NewString(value interface{}) (String, error) {
 	v, ok := value.(string)
 	if !ok {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidStringInput
 	}
-	//TODO: Error
 	if len(v) > 1024*1024 {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidStringLength
 	}
 
 	return String(v), nil
@@ -75,11 +112,10 @@ type Decimal float64
 func NewDecimal(value interface{}) (Decimal, error) {
 	v, ok := value.(float64)
 	if !ok {
-		return 0.0, ErrInvalidIntegerInput
+		return 0.0, ErrInvalidDecimalInput
 	}
-	//TODO: Error
 	if v > math.MaxFloat64 {
-		return 0.0, ErrInvalidIntegerInput
+		return 0.0, ErrInvalidDecimalRange
 	}
 
 	return Decimal(v), nil
@@ -92,12 +128,11 @@ type URI string
 func NewURI(value interface{}) (URI, error) {
 	v, ok := value.(string)
 	if !ok {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidStringInput
 	}
-	//TODO: Error
 	_, err := url.ParseRequestURI(v)
 	if err != nil {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidURI
 	}
 
 	return URI(v), nil
@@ -110,18 +145,17 @@ type URL URI
 func NewURL(value interface{}) (URL, error) {
 	v, ok := value.(string)
 	if !ok {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidStringInput
 	}
-	//TODO: Error
 	u, err := url.Parse(v)
 	if err != nil {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidURL
 	}
 	if strings.TrimSpace(u.Scheme) == "" {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidURLScheme
 	}
 	if strings.TrimSpace(u.Host) == "" {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidURLHost
 	}
 
 	return URL(v), nil
@@ -147,9 +181,8 @@ type Base64Binary string
 func NewBase64Binary(value interface{}) (Base64Binary, error) {
 	v, ok := value.([]byte)
 	if !ok {
-		return "", ErrInvalidIntegerInput
+		return "", ErrInvalidByteInput
 	}
-	//TODO: Error
 	encoded := base64.StdEncoding.EncodeToString(v)
 
 	return Base64Binary(encoded), nil
@@ -162,12 +195,11 @@ type Instant string
 func NewInstant(value interface{}) (Instant, error) {
 	v, ok := value.(string)
 	if !ok {
-		return Instant(time.Now().Format(time.RFC3339)), ErrInvalidIntegerInput
+		return Instant(time.Now().Format(time.RFC3339)), ErrInvalidStringInput
 	}
-	//TODO: Error
 	t, err := time.Parse(time.RFC3339, v)
 	if err != nil {
-		return Instant(time.Now().Format(time.RFC3339)), ErrInvalidIntegerInput
+		return Instant(time.Now().Format(time.RFC3339)), ErrInvalidDateTimeInput
 	}
 	return Instant(t.Format(time.RFC3339)), nil
 }
@@ -179,9 +211,8 @@ type Date string
 func NewDate(value interface{}) (Date, error) {
 	v, ok := value.(string)
 	if !ok {
-		return Date(v), ErrInvalidIntegerInput
+		return Date(v), ErrInvalidStringInput
 	}
-	//TODO: Error
 	_, err := time.Parse("2006", v)
 	if err == nil {
 		return Date(v), nil
@@ -195,7 +226,7 @@ func NewDate(value interface{}) (Date, error) {
 		return Date(v), nil
 	}
 
-	return Date(v), ErrInvalidIntegerInput
+	return Date(v), ErrInvalidDateInput
 }
 
 // DateTime FHIR type
@@ -223,9 +254,8 @@ type Time string
 func NewTime(value interface{}) (Time, error) {
 	v, ok := value.(string)
 	if !ok {
-		return Time(v), ErrInvalidIntegerInput
+		return Time(v), ErrInvalidStringInput
 	}
-	//TODO: Error
 	_, err := time.Parse("15:04:05", v)
 	if err == nil {
 		return Time(v), nil
@@ -239,7 +269,7 @@ func NewTime(value interface{}) (Time, error) {
 		return Time(t.Format("15:04:05")), nil
 	}
 
-	return Time(v), ErrInvalidIntegerInput
+	return Time(v), ErrInvalidTimeInput
 }
 
 // Code FHIR type
@@ -264,9 +294,8 @@ func NewOID(value interface{}) (OID, error) {
 	if err != nil {
 		return "", err
 	}
-	//TODO: Error
 	if !strings.HasPrefix(string(v), "urn:oid:") {
-		return "", err
+		return "", ErrInvalidOIDInput
 	}
 
 	return OID(v), nil
@@ -282,9 +311,8 @@ func NewID(value interface{}) (ID, error) {
 		return "", err
 	}
 	var re = regexp.MustCompile(`[A-Za-z0-9\-\.]{1,64}`)
-	//TODO: Error
 	if !re.MatchString(string(v)) {
-		return "", err
+		return "", ErrInvalidIDInput
 	}
 	return ID(v), nil
 }
@@ -311,9 +339,8 @@ func NewUnsignedInt(value interface{}) (UnsignedInt, error) {
 	if err != nil {
 		return 0, err
 	}
-	//TODO: Error
 	if i < 0 {
-		return 0, err
+		return 0, ErrInvalidUnsignedIntRange
 	}
 
 	return UnsignedInt(i), nil
@@ -328,9 +355,8 @@ func NewPositiveInt(value interface{}) (PositiveInt, error) {
 	if err != nil {
 		return 0, err
 	}
-	//TODO: Error
 	if i < 1 {
-		return 0, err
+		return 0, ErrInvalidPositiveIntRange
 	}
 
 	return PositiveInt(i), nil
@@ -341,25 +367,24 @@ type UUID URI
 
 // NewUUID returns a valid UUID
 func NewUUID(value interface{}) (UUID, error) {
-	//TODO: Error
 	if value != nil {
 		v, err := NewURI(value)
 		if err != nil {
 			return "", err
 		}
 		if !strings.HasPrefix(string(v), "urn:uuid:") {
-			return "", err
+			return "", ErrInvalidUUIDInput
 		}
 		_, err = uuid.Parse(strings.TrimPrefix(string(v), "urn:uuid:"))
 		if err != nil {
-			return "", err
+			return "", ErrInvalidUUIDFormat
 		}
 		return UUID(v), nil
 	}
 
 	u, err := uuid.NewUUID()
 	if err != nil {
-		return "", err
+		return "", ErrInvalidUUIDGeneration
 	}
 	v := u.String()
 	if !strings.HasPrefix(v, "urn:uuid:") {

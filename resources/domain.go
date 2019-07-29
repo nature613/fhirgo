@@ -6,8 +6,8 @@ import (
 
 // Narrative for domain resource
 type Narrative struct {
-	Status d.Code   `json:"status"`
-	Div    d.String `json:"div"`
+	Status *d.Code   `json:"status"`
+	Div    *d.String `json:"div"`
 }
 
 // Domain resource
