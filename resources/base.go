@@ -7,13 +7,13 @@ import (
 // Base Resource
 type Base struct {
 	ResourceType  string  `json:"resourceType"`
-	ID            *d.ID   `json:"id"`
-	Meta          *d.Meta `json:"meta"`
-	ImplicitRules *d.URI  `json:"implicitRules"`
-	Language      *d.Code `json:"language"`
+	ID            *d.ID   `json:"id,omitempty"`
+	Meta          *d.Meta `json:"meta,omitempty"`
+	ImplicitRules *d.URI  `json:"implicitRules,omitempty"`
+	Language      *d.Code `json:"language,omitempty"`
 }
 
 // NewBase returns a empty Base with resourceType
 func NewBase(resourceType string) (Base, error) {
-	return Base{ResourceType: resourceType}, nil
+	return Base{ResourceType: ""}, nil
 }

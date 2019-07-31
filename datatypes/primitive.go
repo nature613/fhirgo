@@ -53,9 +53,9 @@ var (
 	ErrInvalidPositiveIntRange = errors.New("Positive Integer value is out of range. Must be between 1 and 2,147,483,647")
 	// ErrInvalidUUIDInput is returned when the UUID is invalid
 	ErrInvalidUUIDInput = errors.New("A valid UUID must be present, should start with `urn:uuid:`")
-	// ErrInvalidUUIDFormat is returned when the
+	// ErrInvalidUUIDFormat is returned when the UUID format is not right
 	ErrInvalidUUIDFormat = errors.New("Invalid UUID format")
-	// ErrInvalidUUIDGeneration is returned when the
+	// ErrInvalidUUIDGeneration is returned when the UUID generation failed
 	ErrInvalidUUIDGeneration = errors.New("Unable to generate UUID")
 )
 
