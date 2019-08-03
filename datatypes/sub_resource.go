@@ -1,5 +1,8 @@
 package datatypes
 
+// Resource type - to map into any kind of resource
+type Resource interface{}
+
 // PatientContact subResource
 type PatientContact struct {
 	Relationship []CodeableConcept `json:"relationship,omitempty"`
@@ -68,4 +71,74 @@ type EncounterLocation struct {
 	Status       *Code            `json:"status,omitempty"`
 	PhysicalType *CodeableConcept `json:"physicalType,omitempty"`
 	Period       *Period          `json:"period,omitempty"`
+}
+
+// ObservationReferenceRange subResource
+type ObservationReferenceRange struct {
+	Low       *SimpleQuantity   `json:"low,omitempty"`
+	High      *SimpleQuantity   `json:"high,omitempty"`
+	Type      *CodeableConcept  `json:"type,omitempty"`
+	AppliesTo []CodeableConcept `json:"appliesTo,omitempty"`
+	Age       *Range            `json:"age,omitempty"`
+	Text      *String           `json:"text,omitempty"`
+}
+
+// ObservationComponent subResource
+type ObservationComponent struct {
+	Code                 *CodeableConcept            `json:"code,omitempty"`
+	ValueQuantity        *Quantity                   `json:"valueQuantity,omitempty"`
+	ValueCodeableConcept *CodeableConcept            `json:"valueCodeableConcept,omitempty"`
+	ValueString          *String                     `json:"valueString,omitempty"`
+	ValueBoolean         *Boolean                    `json:"valueBoolean,omitempty"`
+	ValueInteger         *Integer                    `json:"valueInteger,omitempty"`
+	ValueRange           *Range                      `json:"valueRange,omitempty"`
+	ValueRatio           *Ratio                      `json:"valueRatio,omitempty"`
+	ValueSampledData     *SampledData                `json:"valueSampledData,omitempty"`
+	ValueTime            *Time                       `json:"valueTime,omitempty"`
+	ValueDateTime        *DateTime                   `json:"valueDateTime,omitempty"`
+	ValuePeriod          *Period                     `json:"valuePeriod,omitempty"`
+	DataAbsentReason     *CodeableConcept            `json:"dataAbsentReason,omitempty"`
+	Interpretation       []CodeableConcept           `json:"interpretation,omitempty"`
+	ReferenceRange       []ObservationReferenceRange `json:"referenceRange,omitempty"`
+}
+
+// BundleLink subResource
+type BundleLink struct {
+	Relation *String `json:"relation,omitempty"`
+	URL      *URI    `json:"url,omitempty"`
+}
+
+// BundleEntrySearch subResource
+type BundleEntrySearch struct {
+	Mode  *Code    `json:"mode,omitempty"`
+	Score *Decimal `json:"score,omitempty"`
+}
+
+// BundleEntryRequest subResource
+type BundleEntryRequest struct {
+	Method          *Code    `json:"method,omitempty"`
+	URL             *URI     `json:"url,omitempty"`
+	IfNoneMatch     *String  `json:"ifNoneMatch,omitempty"`
+	IfModifiedSince *Instant `json:"ifModifiedSince,omitempty"`
+	IfMatch         *String  `json:"ifMatch,omitempty"`
+	IfNoneExist     *String  `json:"ifNoneExist,omitempty"`
+}
+
+// BundleEntryResponse subResource
+type BundleEntryResponse struct {
+	Status       *String   `json:"status,omitempty"`
+	Location     *URI      `json:"location,omitempty"`
+	Etag         *String   `json:"etag,omitempty"`
+	LastModified *Instant  `json:"lastModified,omitempty"`
+	Outcome      *Resource `json:"outcome,omitempty"` // Resource
+}
+
+// BundleEntry subResource
+type BundleEntry struct {
+	Link     []BundleLink         `json:"link,omitempty"`
+	FullURL  *URI                 `json:"fullUrl,omitempty"`
+	Resource *Resource            `json:"resource,omitempty"` // A resource in the bundle
+	Search   *BundleEntrySearch   `json:"search,omitempty"`
+	Request  *BundleEntryRequest  `json:"request,omitempty"`
+	Response *BundleEntryResponse `json:"response,omitempty"`
 }

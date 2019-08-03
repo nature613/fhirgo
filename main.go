@@ -19,8 +19,8 @@ func main() {
 
 	var name []d.HumanName
 	use := d.Code("official")
-	family := d.String("Hoque")
-	given := []d.String{"Gazi", "Muhammad", "Samiul"}
+	family := d.String("Doe")
+	given := []d.String{"John", "Michael"}
 	nm := d.HumanName{Use: &use, Family: &family, Given: given}
 	name = make([]d.HumanName, 0)
 	name = append(name, nm)
@@ -33,7 +33,7 @@ func main() {
 
 	var birthDate *d.Date
 	birthDate = new(d.Date)
-	*birthDate = "1983-02-07"
+	*birthDate = "1977-09-14"
 
 	var deceasedBoolean *d.Boolean
 
