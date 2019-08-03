@@ -2,33 +2,33 @@ package datatypes
 
 // Element FHIR Type
 type Element struct {
-	ID        String      `json:"id"`
+	ID        String      `json:"id,omitempty"`
 	Extension []Extension `json:"extension,omitempty"`
 }
 
 // BackboneElement FHIR Type
 type BackboneElement struct {
 	Element
-	ModifierExtension []Extension `json:"modifierExtension"`
+	ModifierExtension []Extension `json:"modifierExtension,omitempty"`
 }
 
 // Reference FHIR Type
 type Reference struct {
-	Reference  *String     `json:"reference"`
-	Type       *URI        `json:"type"`
-	Identifier *Identifier `json:"identifier"`
-	Display    *String     `json:"display"`
+	Reference  *String     `json:"reference,omitempty"`
+	Type       *URI        `json:"type,omitempty"`
+	Identifier *Identifier `json:"identifier,omitempty"`
+	Display    *String     `json:"display,omitempty"`
 	Element
 }
 
 // Meta FHIR Type
 type Meta struct {
-	VersionID   *ID         `json:"versionId"`
-	LastUpdated *Instant    `json:"lastUpdated"`
-	Source      *URI        `json:"source"`
-	Profile     []Canonical `json:"profile"`
-	Security    []Coding    `json:"security"`
-	Tag         []Coding    `json:"tag"`
+	VersionID   *ID         `json:"versionId,omitempty"`
+	LastUpdated *Instant    `json:"lastUpdated,omitempty"`
+	Source      *URI        `json:"source,omitempty"`
+	Profile     []Canonical `json:"profile,omitempty"`
+	Security    []Coding    `json:"security,omitempty"`
+	Tag         []Coding    `json:"tag,omitempty"`
 	Element
 }
 
@@ -70,7 +70,7 @@ type Narrative struct {
 
 // Extension FHIR Type
 type Extension struct {
-	URL                      *URI                 `json:"url"`
+	URL                      *URI                 `json:"url,omitempty"`
 	ValueBase64Binary        *Base64Binary        `json:"valueBase64Binary,omitempty"`
 	ValueBoolean             *Boolean             `json:"valueBoolean,omitempty"`
 	ValueCanonical           *Canonical           `json:"valueCanonical,omitempty"`

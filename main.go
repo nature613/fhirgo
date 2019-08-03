@@ -7,12 +7,78 @@ import (
 	"os"
 	"path/filepath"
 
+	d "github.com/monarko/fhirgo/datatypes"
 	r "github.com/monarko/fhirgo/resources"
 	"github.com/xeipuuv/gojsonschema"
 )
 
 func main() {
-	pat, err := r.NewPatient()
+	var identifier []d.Identifier
+
+	var active *d.Boolean
+
+	var name []d.HumanName
+	use := d.Code("official")
+	family := d.String("Hoque")
+	given := []d.String{"Gazi", "Muhammad", "Samiul"}
+	nm := d.HumanName{Use: &use, Family: &family, Given: given}
+	name = make([]d.HumanName, 0)
+	name = append(name, nm)
+
+	var telecom []d.ContactPoint
+
+	var gender *d.Code
+	gender = new(d.Code)
+	*gender = "male"
+
+	var birthDate *d.Date
+	birthDate = new(d.Date)
+	*birthDate = "1983-02-07"
+
+	var deceasedBoolean *d.Boolean
+
+	var deceasedDateTime *d.DateTime
+
+	var address []d.Address
+
+	var maritalStatus *d.CodeableConcept
+
+	var multipleBirthBoolean *d.Boolean
+
+	var multipleBirthInteger *d.Integer
+
+	var photo []d.Attachment
+
+	var contact []d.PatientContact
+
+	var communication []d.PatientCommunication
+
+	var generalPractitioner []d.Reference
+
+	var managingOrganization *d.Reference
+
+	var link []d.PatientLink
+
+	pat, err := r.NewPatient(
+		identifier,
+		active,
+		name,
+		telecom,
+		gender,
+		birthDate,
+		deceasedBoolean,
+		deceasedDateTime,
+		address,
+		maritalStatus,
+		multipleBirthBoolean,
+		multipleBirthInteger,
+		photo,
+		contact,
+		communication,
+		generalPractitioner,
+		managingOrganization,
+		link,
+	)
 	if err != nil {
 		fmt.Println("Error:", err.Error())
 		return
@@ -23,6 +89,8 @@ func main() {
 		fmt.Println("Error:", err.Error())
 		return
 	}
+
+	fmt.Println(string(j))
 
 	dir, err := os.Getwd()
 	if err != nil {
@@ -41,7 +109,6 @@ func main() {
 
 	if result.Valid() {
 		fmt.Println("The document is valid")
-		fmt.Println(string(j))
 	} else {
 		fmt.Println("The document is not valid. see errors:")
 		for _, desc := range result.Errors() {

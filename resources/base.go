@@ -1,6 +1,8 @@
 package resources
 
 import (
+	"strings"
+
 	d "github.com/monarko/fhirgo/datatypes"
 )
 
@@ -15,5 +17,5 @@ type Base struct {
 
 // NewBase returns a empty Base with resourceType
 func NewBase(resourceType string) (Base, error) {
-	return Base{ResourceType: ""}, nil
+	return Base{ResourceType: strings.Title(resourceType)}, nil
 }

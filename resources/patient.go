@@ -4,60 +4,76 @@ import (
 	d "github.com/monarko/fhirgo/datatypes"
 )
 
-// PatientContact subResource
-type PatientContact struct {
-	Relationship []d.CodeableConcept `json:"relationship"`
-	Name         *d.HumanName        `json:"name"`
-	Telecom      []d.ContactPoint    `json:"telecom"`
-	Address      *d.Address          `json:"address"`
-	Gender       *d.Code             `json:"gender"`
-	Organization *d.Reference        `json:"organization"`
-	Period       *d.Period           `json:"period"`
-}
-
-// PatientCommunication subResource
-type PatientCommunication struct {
-	Language  *d.CodeableConcept `json:"language"`
-	Preferred *d.Boolean         `json:"preferred"`
-}
-
-// PatientLink subResource
-type PatientLink struct {
-	Other *d.Reference `json:"other"`
-	Type  *d.Code      `json:"type"`
-}
-
 // Patient resource
 type Patient struct {
 	Domain
-	Identifier           []d.Identifier         `json:"identifier,omitempty"`
-	Active               *d.Boolean             `json:"active,omitempty"`
-	Name                 []d.HumanName          `json:"name,omitempty"`
-	Telecom              []d.ContactPoint       `json:"telecom,omitempty"`
-	Gender               *d.Code                `json:"gender,omitempty"`
-	BirthDate            *d.Date                `json:"birthDate,omitempty"`
-	DeceasedBoolean      *d.Boolean             `json:"deceasedBoolean,omitempty"`
-	DeceasedDateTime     *d.DateTime            `json:"deceasedDateTime,omitempty"`
-	Address              []d.Address            `json:"address,omitempty"`
-	MaritalStatus        *d.CodeableConcept     `json:"maritalStatus,omitempty"`
-	MultipleBirthBoolean *d.Boolean             `json:"multipleBirthBoolean,omitempty"`
-	MultipleBirthInteger *d.Integer             `json:"multipleBirthInteger,omitempty"`
-	Photo                []d.Attachment         `json:"photo,omitempty"`
-	Contact              []PatientContact       `json:"contact,omitempty"`
-	Communication        []PatientCommunication `json:"communication,omitempty"`
-	GeneralPractitioner  []d.Reference          `json:"generalPractitioner,omitempty"`
-	ManagingOrganization *d.Reference           `json:"managingOrganization,omitempty"`
-	Link                 []PatientLink          `json:"link,omitempty"`
+	Identifier           []d.Identifier           `json:"identifier,omitempty"`
+	Active               *d.Boolean               `json:"active,omitempty"`
+	Name                 []d.HumanName            `json:"name,omitempty"`
+	Telecom              []d.ContactPoint         `json:"telecom,omitempty"`
+	Gender               *d.Code                  `json:"gender,omitempty"`
+	BirthDate            *d.Date                  `json:"birthDate,omitempty"`
+	DeceasedBoolean      *d.Boolean               `json:"deceasedBoolean,omitempty"`
+	DeceasedDateTime     *d.DateTime              `json:"deceasedDateTime,omitempty"`
+	Address              []d.Address              `json:"address,omitempty"`
+	MaritalStatus        *d.CodeableConcept       `json:"maritalStatus,omitempty"`
+	MultipleBirthBoolean *d.Boolean               `json:"multipleBirthBoolean,omitempty"`
+	MultipleBirthInteger *d.Integer               `json:"multipleBirthInteger,omitempty"`
+	Photo                []d.Attachment           `json:"photo,omitempty"`
+	Contact              []d.PatientContact       `json:"contact,omitempty"`
+	Communication        []d.PatientCommunication `json:"communication,omitempty"`
+	GeneralPractitioner  []d.Reference            `json:"generalPractitioner,omitempty"`
+	ManagingOrganization *d.Reference             `json:"managingOrganization,omitempty"`
+	Link                 []d.PatientLink          `json:"link,omitempty"`
 }
 
 // NewPatient returns a valid Patient resource
-func NewPatient() (Patient, error) {
-	d, err := NewDomain("Patient")
-	if err != nil {
-		return Patient{}, nil
-	}
+func NewPatient(
+	identifier []d.Identifier,
+	active *d.Boolean,
+	name []d.HumanName,
+	telecom []d.ContactPoint,
+	gender *d.Code,
+	birthDate *d.Date,
+	deceasedBoolean *d.Boolean,
+	deceasedDateTime *d.DateTime,
+	address []d.Address,
+	maritalStatus *d.CodeableConcept,
+	multipleBirthBoolean *d.Boolean,
+	multipleBirthInteger *d.Integer,
+	photo []d.Attachment,
+	contact []d.PatientContact,
+	communication []d.PatientCommunication,
+	generalPractitioner []d.Reference,
+	managingOrganization *d.Reference,
+	link []d.PatientLink,
+) (Patient, error) {
 	p := Patient{}
-	p.Domain = d
+	p.ResourceType = "Patient"
+	id := d.ID("2751eaff-c077-49ff-97a6-95687de988c8")
+	p.ID = &id
+
+	p.Identifier = identifier
+	p.Active = active
+	p.Name = name
+	p.Telecom = telecom
+	p.Gender = gender
+	p.BirthDate = birthDate
+	p.DeceasedBoolean = deceasedBoolean
+	p.DeceasedDateTime = deceasedDateTime
+	p.Address = address
+	p.MaritalStatus = maritalStatus
+	p.MultipleBirthBoolean = multipleBirthBoolean
+	p.MultipleBirthInteger = multipleBirthInteger
+	p.Photo = photo
+	p.Contact = contact
+	p.Communication = communication
+	p.GeneralPractitioner = generalPractitioner
+
+	if managingOrganization != nil {
+		p.ManagingOrganization = managingOrganization
+	}
+	p.Link = link
 
 	return p, nil
 }
