@@ -2,6 +2,7 @@ package resources
 
 import (
 	d "github.com/monarko/fhirgo/datatypes"
+	"github.com/monarko/fhirgo/schema"
 )
 
 // Bundle resource
@@ -14,4 +15,9 @@ type Bundle struct {
 	Link       []d.BundleLink  `json:"link,omitempty"`
 	Entry      []d.BundleEntry `json:"entry,omitempty"`
 	Signature  *d.Signature    `json:"signature,omitempty"`
+}
+
+// Validate returns a check against schema
+func (b *Bundle) Validate() (bool, []error) {
+	return schema.ValidateResource(*b, "4.0")
 }

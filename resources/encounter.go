@@ -2,6 +2,7 @@ package resources
 
 import (
 	d "github.com/monarko/fhirgo/datatypes"
+	"github.com/monarko/fhirgo/schema"
 )
 
 // Encounter resource
@@ -30,4 +31,9 @@ type Encounter struct {
 	Location        []d.EncounterLocation       `json:"location,omitempty"`
 	ServiceProvider *d.Reference                `json:"serviceProvider,omitempty"`
 	PartOf          *d.Reference                `json:"partOf,omitempty"`
+}
+
+// Validate returns a check against schema
+func (e *Encounter) Validate() (bool, []error) {
+	return schema.ValidateResource(*e, "4.0")
 }

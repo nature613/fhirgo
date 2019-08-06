@@ -2,6 +2,7 @@ package resources
 
 import (
 	d "github.com/monarko/fhirgo/datatypes"
+	"github.com/monarko/fhirgo/schema"
 )
 
 // Patient resource
@@ -76,4 +77,9 @@ func NewPatient(
 	p.Link = link
 
 	return p, nil
+}
+
+// Validate returns a check against schema
+func (p *Patient) Validate() (bool, []error) {
+	return schema.ValidateResource(*p, "4.0")
 }

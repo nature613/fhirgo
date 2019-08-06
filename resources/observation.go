@@ -2,6 +2,7 @@ package resources
 
 import (
 	d "github.com/monarko/fhirgo/datatypes"
+	"github.com/monarko/fhirgo/schema"
 )
 
 // Observation resource
@@ -44,4 +45,9 @@ type Observation struct {
 	HasMember            []d.Reference                 `json:"hasMember,omitempty"`
 	DerivedFrom          []d.Reference                 `json:"derivedFrom,omitempty"`
 	Component            []d.ObservationComponent      `json:"component,omitempty"`
+}
+
+// Validate returns a check against schema
+func (o *Observation) Validate() (bool, []error) {
+	return schema.ValidateResource(*o, "4.0")
 }
