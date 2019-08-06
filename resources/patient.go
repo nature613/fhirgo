@@ -48,12 +48,9 @@ func NewPatient(
 	generalPractitioner []d.Reference,
 	managingOrganization *d.Reference,
 	link []d.PatientLink,
-) (Patient, error) {
+) Patient {
 	p := Patient{}
 	p.ResourceType = "Patient"
-	id := d.ID("2751eaff-c077-49ff-97a6-95687de988c8")
-	p.ID = &id
-
 	p.Identifier = identifier
 	p.Active = active
 	p.Name = name
@@ -76,7 +73,7 @@ func NewPatient(
 	}
 	p.Link = link
 
-	return p, nil
+	return p
 }
 
 // Validate returns a check against schema

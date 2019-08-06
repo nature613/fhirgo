@@ -3,20 +3,14 @@ package schema
 import (
 	"encoding/json"
 	"errors"
-	"os"
-	"path/filepath"
 
+	d "github.com/monarko/fhirgo/datatypes"
 	j "github.com/xeipuuv/gojsonschema"
 )
 
 // FHIRSchema returns a valid FHIR schema
-func FHIRSchema(version string) (j.JSONLoader, error) {
-	dir, err := os.Getwd()
-	if err != nil {
-		return nil, err
-	}
-
-	file := "file://" + filepath.Join(dir, "schema", "fhir."+version+".schema.json")
+func FHIRSchema(path string) (j.JSONLoader, error) {
+	file := "file://" + d.SchemaPath
 
 	schemaLoader := j.NewReferenceLoader(file)
 
@@ -24,7 +18,7 @@ func FHIRSchema(version string) (j.JSONLoader, error) {
 }
 
 // ValidateResource against a valid schema
-func ValidateResource(i interface{}, schemaVersion string) (bool, []error) {
+func ValidateResource(i interface{}, schemaFilePath string) (bool, []error) {
 	errs := make([]error, 0)
 	valid := false
 	r, err := json.Marshal(i)

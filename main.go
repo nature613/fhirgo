@@ -54,7 +54,7 @@ func main() {
 
 	var link []d.PatientLink
 
-	pat, err := r.NewPatient(
+	pat := r.NewPatient(
 		identifier,
 		active,
 		name,
@@ -74,10 +74,6 @@ func main() {
 		managingOrganization,
 		link,
 	)
-	if err != nil {
-		fmt.Println("Error:", err.Error())
-		return
-	}
 
 	valid, errs := pat.Validate()
 	if !valid {

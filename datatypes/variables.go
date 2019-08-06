@@ -1,7 +1,8 @@
 package datatypes
 
 var (
-	languages = map[string]string{
+	// Languages list
+	Languages = map[string]string{
 		"ar":    "Arabic",
 		"bn":    "Bengali",
 		"cs":    "Czech",
@@ -60,7 +61,8 @@ var (
 		"zh-TW": "Chinese (Taiwan)",
 	}
 
-	mimeTypes = map[string]bool{
+	// MimeTypes list
+	MimeTypes = map[string]bool{
 		"application/1d-interleaved-parityfec":                                      true,
 		"application/3gpdash-qoe-report+xml":                                        true,
 		"application/3gpp-ims+xml":                                                  true,
@@ -1842,4 +1844,7 @@ var (
 		"video/VP8":                                            true,
 		"ISO/IEC":                                              true,
 	}
+
+	// SchemaPath for FHIR
+	SchemaPath = "/Users/samiulhoque/Desktop/fhir.4.0.schema.json"
 )
