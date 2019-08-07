@@ -1,7 +1,8 @@
 package datatypes
 
-// Resource type - to map into any kind of resource
-type Resource interface{}
+import (
+	"encoding/json"
+)
 
 // PatientContact subResource
 type PatientContact struct {
@@ -126,19 +127,32 @@ type BundleEntryRequest struct {
 
 // BundleEntryResponse subResource
 type BundleEntryResponse struct {
-	Status       *String   `json:"status,omitempty"`
-	Location     *URI      `json:"location,omitempty"`
-	Etag         *String   `json:"etag,omitempty"`
-	LastModified *Instant  `json:"lastModified,omitempty"`
-	Outcome      *Resource `json:"outcome,omitempty"` // Resource
+	Status       *String     `json:"status,omitempty"`
+	Location     *URI        `json:"location,omitempty"`
+	Etag         *String     `json:"etag,omitempty"`
+	LastModified *Instant    `json:"lastModified,omitempty"`
+	Outcome      interface{} `json:"outcome,omitempty"` // Resource
 }
 
 // BundleEntry subResource
 type BundleEntry struct {
 	Link     []BundleLink         `json:"link,omitempty"`
 	FullURL  *URI                 `json:"fullUrl,omitempty"`
-	Resource *Resource            `json:"resource,omitempty"` // A resource in the bundle
+	Resource interface{}          `json:"resource,omitempty"` // A resource in the bundle
 	Search   *BundleEntrySearch   `json:"search,omitempty"`
 	Request  *BundleEntryRequest  `json:"request,omitempty"`
 	Response *BundleEntryResponse `json:"response,omitempty"`
+}
+
+// GetResourceType returns the resource type
+func (b *BundleEntry) GetResourceType() (string, error) {
+	m := make(map[string]interface{})
+	bt, err := json.Marshal(b.Resource)
+	if err != nil {
+		return "", err
+	}
+	if err := json.Unmarshal(bt, &m); err != nil {
+		return "", err
+	}
+	return m["resourceType"].(string), nil
 }

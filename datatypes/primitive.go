@@ -5,6 +5,7 @@ import (
 	"math"
 	"net/url"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -110,15 +111,19 @@ type Decimal float64
 
 // NewDecimal returns a valid Decimal
 func NewDecimal(value interface{}) (Decimal, error) {
-	v, ok := value.(float64)
+	v, ok := value.(string)
 	if !ok {
+		return 0.0, ErrInvalidStringInput
+	}
+	f, err := strconv.ParseFloat(v, 64)
+	if err != nil {
 		return 0.0, ErrInvalidDecimalInput
 	}
-	if v > math.MaxFloat64 {
+	if f > math.MaxFloat64 {
 		return 0.0, ErrInvalidDecimalRange
 	}
 
-	return Decimal(v), nil
+	return Decimal(f), nil
 }
 
 // URI FHIR type

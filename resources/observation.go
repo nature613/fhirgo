@@ -17,6 +17,7 @@ type Observation struct {
 	Subject              *d.Reference                  `json:"subject,omitempty"`
 	Focus                *d.Reference                  `json:"focus,omitempty"`
 	Encounter            *d.Reference                  `json:"encounter,omitempty"`
+	Context              *d.Reference                  `json:"context,omitempty"`
 	EffectiveDateTime    *d.DateTime                   `json:"effectiveDateTime"`
 	EffectivePeriod      *d.Period                     `json:"effectivePeriod,omitempty"`
 	EffectiveTiming      *d.Timing                     `json:"effectiveTiming,omitempty"`
