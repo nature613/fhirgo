@@ -1,7 +1,7 @@
 package resources
 
 import (
-	d "github.com/monarko/fhirgo/datatypes"
+	d "github.com/monarko/fhirgo/R4/datatypes"
 	"github.com/monarko/fhirgo/schema"
 )
 
@@ -36,5 +36,5 @@ type Encounter struct {
 
 // Validate returns a check against schema
 func (e *Encounter) Validate() (bool, []error) {
-	return schema.ValidateResource(*e, "4.0")
+	return schema.ValidateResource(*e)
 }

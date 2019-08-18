@@ -1,4 +1,4 @@
-package tools
+package helpers
 
 // SliceContainsString returns idx and true if a found in s. Otherwise -1 and false.
 func SliceContainsString(s []string, a string) bool {

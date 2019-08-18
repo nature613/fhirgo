@@ -3,9 +3,9 @@ package resources
 import (
 	"encoding/json"
 
-	"github.com/monarko/fhirgo/tools"
+	"github.com/monarko/fhirgo/helpers"
 
-	d "github.com/monarko/fhirgo/datatypes"
+	d "github.com/monarko/fhirgo/R4/datatypes"
 	"github.com/monarko/fhirgo/schema"
 )
 
@@ -23,7 +23,7 @@ type Bundle struct {
 
 // Validate returns a check against schema
 func (b *Bundle) Validate() (bool, []error) {
-	return schema.ValidateResource(*b, "4.0")
+	return schema.ValidateResource(*b)
 }
 
 // Transform Bundle
@@ -39,7 +39,7 @@ func (b *Bundle) Transform(resultSet ...string) (Bundle, error) {
 		if err != nil {
 			return *b, err
 		}
-		if resultSet != nil && !tools.SliceContainsString(resultSet, t) {
+		if resultSet != nil && !helpers.SliceContainsString(resultSet, t) {
 			continue
 		}
 		if t == "Patient" {

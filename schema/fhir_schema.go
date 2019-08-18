@@ -3,14 +3,32 @@ package schema
 import (
 	"encoding/json"
 	"errors"
+	"os"
+	"path/filepath"
+	"strings"
 
-	d "github.com/monarko/fhirgo/datatypes"
 	j "github.com/xeipuuv/gojsonschema"
 )
 
-// FHIRSchema returns a valid FHIR schema
-func FHIRSchema(path string) (j.JSONLoader, error) {
-	file := "file://" + d.SchemaPath
+// fhirSchema returns a valid FHIR schema
+func fhirSchema() (j.JSONLoader, error) {
+	schemaPath := os.Getenv("FHIR_SCHEMA_PATH")
+	if len(strings.TrimSpace(schemaPath)) == 0 {
+		return nil, errors.New("Environment variable FHIR_SCHEMA_PATH is not set")
+	}
+
+	fi, err := os.Stat(schemaPath)
+	if err != nil {
+		return nil, err
+	}
+
+	file := "file://"
+	switch mode := fi.Mode(); {
+	case mode.IsDir():
+		file += filepath.Join(schemaPath, "fhir.schema.json")
+	case mode.IsRegular():
+		file += schemaPath
+	}
 
 	schemaLoader := j.NewReferenceLoader(file)
 
@@ -18,7 +36,7 @@ func FHIRSchema(path string) (j.JSONLoader, error) {
 }
 
 // ValidateResource against a valid schema
-func ValidateResource(i interface{}, schemaFilePath string) (bool, []error) {
+func ValidateResource(i interface{}) (bool, []error) {
 	errs := make([]error, 0)
 	valid := false
 	r, err := json.Marshal(i)
@@ -27,13 +45,13 @@ func ValidateResource(i interface{}, schemaFilePath string) (bool, []error) {
 		return valid, errs
 	}
 
-	schemaLoader, err := FHIRSchema("4.0")
+	schemaLoader, err := fhirSchema()
 	if err != nil {
 		errs = append(errs, err)
 		return valid, errs
 	}
-	docLoader := j.NewBytesLoader(r)
 
+	docLoader := j.NewBytesLoader(r)
 	result, err := j.Validate(schemaLoader, docLoader)
 	if err != nil {
 		errs = append(errs, err)

@@ -1,7 +1,7 @@
 package resources
 
 import (
-	d "github.com/monarko/fhirgo/datatypes"
+	d "github.com/monarko/fhirgo/R4/datatypes"
 	"github.com/monarko/fhirgo/schema"
 )
 
@@ -50,5 +50,5 @@ type Observation struct {
 
 // Validate returns a check against schema
 func (o *Observation) Validate() (bool, []error) {
-	return schema.ValidateResource(*o, "4.0")
+	return schema.ValidateResource(*o)
 }
