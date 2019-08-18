@@ -179,7 +179,7 @@ type Timing struct {
 // Signature FHIR Type
 type Signature struct {
 	Element
-	Type         []Coding      `json:"rype,omitempty"`
+	Type         []Coding      `json:"type,omitempty"`
 	When         *Instant      `json:"when,omitempty"`
 	Who          *Reference    `json:"who,omitempty"`
 	OnBehalfOf   *Reference    `json:"onBehalfOf,omitempty"`
