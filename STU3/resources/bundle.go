@@ -5,7 +5,7 @@ import (
 
 	"github.com/monarko/fhirgo/helpers"
 
-	d "github.com/monarko/fhirgo/R4/datatypes"
+	d "github.com/monarko/fhirgo/STU3/datatypes"
 	"github.com/monarko/fhirgo/schema"
 )
 
@@ -23,7 +23,7 @@ type Bundle struct {
 
 // Validate returns a check against schema
 func (b *Bundle) Validate() (bool, []error) {
-	return schema.ValidateResource(*b)
+	return schema.ValidateResource(*b, "3")
 }
 
 // Transform Bundle

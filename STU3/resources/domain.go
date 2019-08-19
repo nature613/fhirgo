@@ -1,7 +1,7 @@
 package resources
 
 import (
-	d "github.com/monarko/fhirgo/R4/datatypes"
+	d "github.com/monarko/fhirgo/STU3/datatypes"
 )
 
 // Domain resource

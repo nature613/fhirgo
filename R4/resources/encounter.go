@@ -24,7 +24,6 @@ type Encounter struct {
 	Period          *d.Period                   `json:"period,omitempty"`
 	Length          *d.Duration                 `json:"length,omitempty"`
 	ReasonCode      []d.CodeableConcept         `json:"reasonCode,omitempty"`
-	Reason          []d.CodeableConcept         `json:"reason,omitempty"` // FHIR STU3
 	ReasonReference []d.Reference               `json:"reasonReference,omitempty"`
 	Diagnosis       []d.EncounterDiagnosis      `json:"diagnosis,omitempty"`
 	Account         []d.Reference               `json:"account,omitempty"`
@@ -36,5 +35,5 @@ type Encounter struct {
 
 // Validate returns a check against schema
 func (e *Encounter) Validate() (bool, []error) {
-	return schema.ValidateResource(*e)
+	return schema.ValidateResource(*e, "4")
 }

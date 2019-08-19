@@ -30,5 +30,5 @@ type Patient struct {
 
 // Validate returns a check against schema
 func (p *Patient) Validate() (bool, []error) {
-	return schema.ValidateResource(*p)
+	return schema.ValidateResource(*p, "4")
 }

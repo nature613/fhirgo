@@ -1,7 +1,7 @@
 package resources
 
 import (
-	d "github.com/monarko/fhirgo/R4/datatypes"
+	d "github.com/monarko/fhirgo/STU3/datatypes"
 	"github.com/monarko/fhirgo/schema"
 )
 
@@ -30,5 +30,5 @@ type Patient struct {
 
 // Validate returns a check against schema
 func (p *Patient) Validate() (bool, []error) {
-	return schema.ValidateResource(*p)
+	return schema.ValidateResource(*p, "3")
 }

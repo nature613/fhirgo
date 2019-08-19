@@ -50,5 +50,5 @@ type Observation struct {
 
 // Validate returns a check against schema
 func (o *Observation) Validate() (bool, []error) {
-	return schema.ValidateResource(*o)
+	return schema.ValidateResource(*o, "4")
 }

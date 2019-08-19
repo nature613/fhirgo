@@ -23,7 +23,7 @@ type Bundle struct {
 
 // Validate returns a check against schema
 func (b *Bundle) Validate() (bool, []error) {
-	return schema.ValidateResource(*b)
+	return schema.ValidateResource(*b, "4")
 }
 
 // Transform Bundle
