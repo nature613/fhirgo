@@ -232,3 +232,35 @@ type SpecimenContainer struct {
 	AdditiveCodeableConcept *CodeableConcept `json:"additiveCodeableConcept,omitempty"`
 	AdditiveReference       *Reference       `json:"additiveReference,omitempty"`
 }
+
+// CarePlanActivity subResource
+type CarePlanActivity struct {
+	OutcomeCodeableConcept []CodeableConcept       `json:"outcomeCodeableConcept,omitempty"`
+	OutcomeReference       []Reference             `json:"outcomeReference,omitempty"`
+	Progress               []Annotation            `json:"progress,omitempty"`
+	Reference              *Reference              `json:"reference,omitempty"`
+	Detail                 *CarePlanActivityDetail `json:"detail,omitempty"`
+}
+
+// CarePlanActivityDetail subResource
+type CarePlanActivityDetail struct {
+	Category               *CodeableConcept  `json:"category,omitempty"`
+	Definition             *Reference        `json:"definition,omitempty"`
+	Code                   *CodeableConcept  `json:"code,omitempty"`
+	ReasonCode             []CodeableConcept `json:"reasonCode,omitempty"`
+	ReasonReference        []Reference       `json:"reasonReference,omitempty"`
+	Goal                   []Reference       `json:"goal,omitempty"`
+	Status                 *Code             `json:"status,omitempty"`
+	StatusReason           *String           `json:"statusReason,omitempty"`
+	Prohibited             *Boolean          `json:"prohibited,omitempty"`
+	ScheduledTiming        *Timing           `json:"scheduledTiming,omitempty"`
+	ScheduledPeriod        *Period           `json:"scheduledPeriod,omitempty"`
+	ScheduledString        *String           `json:"scheduledString,omitempty"`
+	Location               *Reference        `json:"location,omitempty"`
+	Performer              []Reference       `json:"performer,omitempty"`
+	ProductCodeableConcept *CodeableConcept  `json:"productCodeableConcept,omitempty"`
+	ProductReference       *Reference        `json:"productReference,omitempty"`
+	DailyAmount            *SimpleQuantity   `json:"dailyAmount,omitempty"`
+	Quantity               *SimpleQuantity   `json:"quantity,omitempty"`
+	Description            *String           `json:"description,omitempty"`
+}
