@@ -264,3 +264,25 @@ type CarePlanActivityDetail struct {
 	Quantity               *SimpleQuantity   `json:"quantity,omitempty"`
 	Description            *String           `json:"description,omitempty"`
 }
+
+// GoalTarget subResource
+type GoalTarget struct {
+	Measure               *CodeableConcept `json:"measure,omitempty"`
+	DetailQuantity        *Quantity        `json:"detailQuantity,omitempty"`
+	DetailRange           *Range           `json:"detailRange,omitempty"`
+	DetailCodeableConcept *CodeableConcept `json:"detailCodeableConcept,omitempty"`
+	DueDate               *Date            `json:"dueDate,omitempty"`
+	DueDuration           *Duration        `json:"dueDuration,omitempty"`
+}
+
+// RiskAssessmentPrediction subResource
+type RiskAssessmentPrediction struct {
+	Outcome            *CodeableConcept `json:"outcome,omitempty"`
+	ProbabilityDecimal *Decimal         `json:"probabilityDecimal,omitempty"`
+	ProbabilityRange   *Range           `json:"probabilityRange,omitempty"`
+	QualitativeRisk    *CodeableConcept `json:"qualitativeRisk,omitempty"`
+	RelativeRisk       *Decimal         `json:"relativeRisk,omitempty"`
+	WhenPeriod         *Period          `json:"whenPeriod,omitempty"`
+	WhenRange          *Range           `json:"whenRange,omitempty"`
+	Rationale          *String          `json:"rationale,omitempty"`
+}
