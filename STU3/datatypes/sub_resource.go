@@ -156,3 +156,79 @@ func (b *BundleEntry) GetResourceType() (string, error) {
 	}
 	return m["resourceType"].(string), nil
 }
+
+// AllergyIntoleranceReaction subResource
+type AllergyIntoleranceReaction struct {
+	Substance     *CodeableConcept  `json:"substance,omitempty"`
+	Manifestation []CodeableConcept `json:"manifestation,omitempty"`
+	Description   *String           `json:"description,omitempty"`
+	Onset         *DateTime         `json:"onset,omitempty"`
+	Severity      *Code             `json:"severity,omitempty"`
+	ExposureRoute *CodeableConcept  `json:"exposureRoute,omitempty"`
+	Note          []Annotation      `json:"note,omitempty"`
+}
+
+// FamilyMemberHistoryCondition subResource
+type FamilyMemberHistoryCondition struct {
+	Code        *CodeableConcept `json:"code,omitempty"`
+	Outcome     *CodeableConcept `json:"outcome,omitempty"`
+	OnsetAge    *Age             `json:"onsetAge,omitempty"`
+	OnsetRange  *Range           `json:"onsetRange,omitempty"`
+	OnsetPeriod *Period          `json:"onsetPeriod,omitempty"`
+	OnsetString *String          `json:"onsetString,omitempty"`
+	Note        []Annotation     `json:"note,omitempty"`
+}
+
+// ConditionStage subResource
+type ConditionStage struct {
+	Summary    *CodeableConcept `json:"summary,omitempty"`
+	Assessment []Reference      `json:"assessment,omitempty"`
+}
+
+// ConditionEvidence subResource
+type ConditionEvidence struct {
+	Code   []CodeableConcept `json:"code,omitempty"`
+	Detail []Reference       `json:"detail,omitempty"`
+}
+
+// DiagnosticReportPerformer subResource
+type DiagnosticReportPerformer struct {
+	Role  *CodeableConcept `json:"role,omitempty"`
+	Actor *Reference       `json:"actor,omitempty"`
+}
+
+// DiagnosticReportImage subResource
+type DiagnosticReportImage struct {
+	Comment *String    `json:"comment,omitempty"`
+	Link    *Reference `json:"link,omitempty"`
+}
+
+// SpecimenCollection subResource
+type SpecimenCollection struct {
+	Collector         *Reference       `json:"collector,omitempty"`
+	CollectedDateTime *DateTime        `json:"collectedDateTime,omitempty"`
+	CollectedPeriod   *Period          `json:"collectedPeriod,omitempty"`
+	Quantity          *SimpleQuantity  `json:"quantity,omitempty"`
+	Method            *CodeableConcept `json:"method,omitempty"`
+	BodySite          *CodeableConcept `json:"bodySite,omitempty"`
+}
+
+// SpecimenProcessing subResource
+type SpecimenProcessing struct {
+	Description  *String          `json:"description,omitempty"`
+	Procedure    *CodeableConcept `json:"procedure,omitempty"`
+	Additive     []Reference      `json:"additive,omitempty"`
+	TimeDateTime *DateTime        `json:"timeDateTime,omitempty"`
+	TimePeriod   *Period          `json:"timePeriod,omitempty"`
+}
+
+// SpecimenContainer subResource
+type SpecimenContainer struct {
+	Identifier              []Identifier     `json:"identifier,omitempty"`
+	Description             *String          `json:"description,omitempty"`
+	Type                    *CodeableConcept `json:"type,omitempty"`
+	Capacity                *SimpleQuantity  `json:"capacity,omitempty"`
+	SpecimenQuantity        *SimpleQuantity  `json:"specimenQuantity,omitempty"`
+	AdditiveCodeableConcept *CodeableConcept `json:"additiveCodeableConcept,omitempty"`
+	AdditiveReference       *Reference       `json:"additiveReference,omitempty"`
+}
