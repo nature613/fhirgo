@@ -47,6 +47,3 @@ type UnsignedInt Integer
 
 // PositiveInt FHIR type
 type PositiveInt Integer
-
-// UUID FHIR type
-type UUID URI

@@ -68,7 +68,6 @@ type Narrative struct {
 
 // Extension FHIR Type
 type Extension struct {
-	URL                  *URI             `json:"url,omitempty"`
 	ValueInteger         *Integer         `json:"valueInteger,omitempty"`
 	ValueUnsignedInt     *UnsignedInt     `json:"valueUnsignedInt,omitempty"`
 	ValuePositiveInt     *PositiveInt     `json:"valuePositiveInt,omitempty"`
@@ -80,7 +79,7 @@ type Extension struct {
 	ValueString          *String          `json:"valueString,omitempty"`
 	ValueURI             *URI             `json:"valueUri,omitempty"`
 	ValueOID             *OID             `json:"valueOid,omitempty"`
-	ValueUUID            *UUID            `json:"valueUuid,omitempty"`
+	ValueUUID            *ID              `json:"valueUuid,omitempty"`
 	ValueID              *ID              `json:"valueId,omitempty"`
 	ValueBoolean         *Boolean         `json:"valueBoolean,omitempty"`
 	ValueCode            *Code            `json:"valueCode,omitempty"`
