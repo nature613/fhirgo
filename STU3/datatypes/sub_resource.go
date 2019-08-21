@@ -15,6 +15,13 @@ type PatientContact struct {
 	Period       *Period           `json:"period,omitempty"`
 }
 
+// PatientAnimal subResource
+type PatientAnimal struct {
+	Species      *CodeableConcept `json:"species,omitempty"`
+	Breed        *CodeableConcept `json:"breed,omitempty"`
+	GenderStatus *CodeableConcept `json:"genderStatus,omitempty"`
+}
+
 // PatientCommunication subResource
 type PatientCommunication struct {
 	Language  *CodeableConcept `json:"language,omitempty"`
@@ -49,29 +56,28 @@ type EncounterParticipant struct {
 // EncounterDiagnosis subResource
 type EncounterDiagnosis struct {
 	Condition *Reference       `json:"condition,omitempty"`
-	Use       *CodeableConcept `json:"use,omitempty"`
+	Role      *CodeableConcept `json:"role,omitempty"`
 	Rank      *PositiveInt     `json:"rank,omitempty"`
 }
 
 // EncounterHospitalization subResource
 type EncounterHospitalization struct {
-	PreAdmissionIdentifier *Identifier      `json:"preAdmissionIdentifier,omitempty"`
-	Origin                 *Reference       `json:"origin,omitempty"`
-	AdmitSource            *CodeableConcept `json:"admitSource,omitempty"`
-	ReAdmission            *CodeableConcept `json:"reAdmission,omitempty"`
-	DietPreference         *CodeableConcept `json:"dietPreference,omitempty"`
-	SpecialCourtesy        *CodeableConcept `json:"specialCourtesy,omitempty"`
-	SpecialArrangement     *CodeableConcept `json:"specialArrangement,omitempty"`
-	Destination            *Reference       `json:"destination,omitempty"`
-	DischargeDisposition   *CodeableConcept `json:"dischargeDisposition,omitempty"`
+	PreAdmissionIdentifier *Identifier       `json:"preAdmissionIdentifier,omitempty"`
+	Origin                 *Reference        `json:"origin,omitempty"`
+	AdmitSource            *CodeableConcept  `json:"admitSource,omitempty"`
+	ReAdmission            *CodeableConcept  `json:"reAdmission,omitempty"`
+	DietPreference         []CodeableConcept `json:"dietPreference,omitempty"`
+	SpecialCourtesy        []CodeableConcept `json:"specialCourtesy,omitempty"`
+	SpecialArrangement     []CodeableConcept `json:"specialArrangement,omitempty"`
+	Destination            *Reference        `json:"destination,omitempty"`
+	DischargeDisposition   *CodeableConcept  `json:"dischargeDisposition,omitempty"`
 }
 
 // EncounterLocation subResource
 type EncounterLocation struct {
-	Location     *Reference       `json:"location,omitempty"`
-	Status       *Code            `json:"status,omitempty"`
-	PhysicalType *CodeableConcept `json:"physicalType,omitempty"`
-	Period       *Period          `json:"period,omitempty"`
+	Location *Reference `json:"location,omitempty"`
+	Status   *Code      `json:"status,omitempty"`
+	Period   *Period    `json:"period,omitempty"`
 }
 
 // ObservationReferenceRange subResource
@@ -84,22 +90,27 @@ type ObservationReferenceRange struct {
 	Text      *String           `json:"text,omitempty"`
 }
 
+// ObservationRelated subResource
+type ObservationRelated struct {
+	Type   *Code      `json:"type,omitempty"`
+	Target *Reference `json:"target,omitempty"`
+}
+
 // ObservationComponent subResource
 type ObservationComponent struct {
 	Code                 *CodeableConcept            `json:"code,omitempty"`
 	ValueQuantity        *Quantity                   `json:"valueQuantity,omitempty"`
 	ValueCodeableConcept *CodeableConcept            `json:"valueCodeableConcept,omitempty"`
 	ValueString          *String                     `json:"valueString,omitempty"`
-	ValueBoolean         *Boolean                    `json:"valueBoolean,omitempty"`
-	ValueInteger         *Integer                    `json:"valueInteger,omitempty"`
 	ValueRange           *Range                      `json:"valueRange,omitempty"`
 	ValueRatio           *Ratio                      `json:"valueRatio,omitempty"`
 	ValueSampledData     *SampledData                `json:"valueSampledData,omitempty"`
+	ValueAttachment      *Attachment                 `json:"valueAttachment,omitempty"`
 	ValueTime            *Time                       `json:"valueTime,omitempty"`
 	ValueDateTime        *DateTime                   `json:"valueDateTime,omitempty"`
 	ValuePeriod          *Period                     `json:"valuePeriod,omitempty"`
 	DataAbsentReason     *CodeableConcept            `json:"dataAbsentReason,omitempty"`
-	Interpretation       []CodeableConcept           `json:"interpretation,omitempty"`
+	Interpretation       *CodeableConcept            `json:"interpretation,omitempty"`
 	ReferenceRange       []ObservationReferenceRange `json:"referenceRange,omitempty"`
 }
 

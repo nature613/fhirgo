@@ -22,6 +22,7 @@ type Patient struct {
 	MultipleBirthInteger *d.Integer               `json:"multipleBirthInteger,omitempty"`
 	Photo                []d.Attachment           `json:"photo,omitempty"`
 	Contact              []d.PatientContact       `json:"contact,omitempty"`
+	Animal               *d.PatientAnimal         `json:"animal,omitempty"`
 	Communication        []d.PatientCommunication `json:"communication,omitempty"`
 	GeneralPractitioner  []d.Reference            `json:"generalPractitioner,omitempty"`
 	ManagingOrganization *d.Reference             `json:"managingOrganization,omitempty"`
