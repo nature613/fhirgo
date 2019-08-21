@@ -94,12 +94,12 @@ type SampledData struct {
 // Identifier FHIR Type
 type Identifier struct {
 	Element
-	Use    *Code            `json:"use,omitempty"`
-	Type   *CodeableConcept `json:"type,omitempty"`
-	System *URI             `json:"system,omitempty"`
-	Value  *String          `json:"value,omitempty"`
-	Period *Period          `json:"period,omitempty"`
-	// Assigner *Reference       `json:"assigner,omitempty"`
+	Use      *Code            `json:"use,omitempty"`
+	Type     *CodeableConcept `json:"type,omitempty"`
+	System   *URI             `json:"system,omitempty"`
+	Value    *String          `json:"value,omitempty"`
+	Period   *Period          `json:"period,omitempty"`
+	Assigner *Reference       `json:"assigner,omitempty"`
 }
 
 // HumanName FHIR Type
@@ -141,17 +141,16 @@ type ContactPoint struct {
 
 // Repeat Type for Timing
 type Repeat struct {
-	BackboneElement
 	BoundsDuration *Duration    `json:"boundsDuration,omitempty"`
 	BoundsRange    *Range       `json:"boundsRange,omitempty"`
 	BoundsPeriod   *Period      `json:"boundsPeriod,omitempty"`
-	Count          *PositiveInt `json:"count,omitempty"`
-	CountMax       *PositiveInt `json:"countMax,omitempty"`
+	Count          *Integer     `json:"count,omitempty"`
+	CountMax       *Integer     `json:"countMax,omitempty"`
 	Duration       *Decimal     `json:"duration,omitempty"`
 	DurationMax    *Decimal     `json:"durationMax,omitempty"`
 	DurationUnit   *Code        `json:"durationUnit,omitempty"`
-	Frequency      *PositiveInt `json:"frequency,omitempty"`
-	FrequencyMax   *PositiveInt `json:"frequencyMax,omitempty"`
+	Frequency      *Integer     `json:"frequency,omitempty"`
+	FrequencyMax   *Integer     `json:"frequencyMax,omitempty"`
 	Period         *Decimal     `json:"period,omitempty"`
 	PeriodMax      *Decimal     `json:"periodMax,omitempty"`
 	PeriodUnit     *Code        `json:"periodUnit,omitempty"`
@@ -172,13 +171,14 @@ type Timing struct {
 // Signature FHIR Type
 type Signature struct {
 	Element
-	Type         []Coding      `json:"type,omitempty"`
-	When         *Instant      `json:"when,omitempty"`
-	Who          *Reference    `json:"who,omitempty"`
-	OnBehalfOf   *Reference    `json:"onBehalfOf,omitempty"`
-	TargetFormat *Code         `json:"targetFormat,omitempty"`
-	SigFormat    *Code         `json:"sigFormat,omitempty"`
-	Data         *Base64Binary `json:"data,omitempty"`
+	Type                []Coding      `json:"type,omitempty"`
+	When                *Instant      `json:"when,omitempty"`
+	WhoURI              *URI          `json:"whoURI,omitempty"`
+	WhoReference        *Reference    `json:"whoReference,omitempty"`
+	OnBehalfOfURI       *URI          `json:"onBehalfOfURI,omitempty"`
+	OnBehalfOfReference *Reference    `json:"onBehalfOfReference,omitempty"`
+	ContentType         *Code         `json:"sigFormat,omitempty"`
+	Blob                *Base64Binary `json:"data,omitempty"`
 }
 
 // Annotation FHIR Type
@@ -187,5 +187,5 @@ type Annotation struct {
 	AuthorReference *Reference `json:"authorReference,omitempty"`
 	AuthorString    *String    `json:"authorString,omitempty"`
 	Time            *DateTime  `json:"time,omitempty"`
-	Text            *Markdown  `json:"text,omitempty"`
+	Text            *String    `json:"text,omitempty"`
 }
