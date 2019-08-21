@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	d "github.com/monarko/fhirgo/R4/datatypes"
-	r "github.com/monarko/fhirgo/R4/resources"
+	d "github.com/monarko/fhirgo/STU3/datatypes"
+	r "github.com/monarko/fhirgo/STU3/resources"
 )
 
 func main() {

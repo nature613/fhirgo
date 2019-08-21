@@ -6,7 +6,7 @@ type Attachment struct {
 	ContentType *Code         `json:"contentType,omitempty"`
 	Language    *Code         `json:"language,omitempty"`
 	Data        *Base64Binary `json:"data,omitempty"`
-	URL         *URL          `json:"url,omitempty"`
+	URL         *URI          `json:"url,omitempty"`
 	Size        *UnsignedInt  `json:"size,omitempty"`
 	Hash        *Base64Binary `json:"hash,omitempty"`
 	Title       *String       `json:"title,omitempty"`
@@ -52,18 +52,11 @@ type Count Quantity
 // Duration FHIR Type (Variations on Quantity)
 type Duration Quantity
 
-// MoneyQuantity FHIT Type  (Variations on Quantity)
-type MoneyQuantity Quantity
+// Money FHIT Type  (Variations on Quantity)
+type Money Quantity
 
 // SimpleQuantity FHIT Type  (Variations on Quantity)
 type SimpleQuantity Quantity
-
-// Money FHIR Type
-type Money struct {
-	Element
-	Value    *Decimal `json:"value,omitempty"`
-	Currency *Code    `json:"currency,omitempty"`
-}
 
 // Range FHIR Type
 type Range struct {

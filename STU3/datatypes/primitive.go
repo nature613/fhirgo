@@ -15,12 +15,6 @@ type Decimal float64
 // URI FHIR type
 type URI string
 
-// URL FHIR type
-type URL URI
-
-// Canonical FHIR type
-type Canonical URI
-
 // Base64Binary FHIR type
 type Base64Binary string
 
