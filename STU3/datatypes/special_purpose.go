@@ -6,6 +6,12 @@ type Element struct {
 	Extension []Extension `json:"extension,omitempty"`
 }
 
+// BackboneElement FHIR Type
+type BackboneElement struct {
+	Element
+	ModifierExtension []Extension `json:"modifierExtension,omitempty"`
+}
+
 // Reference FHIR Type
 type Reference struct {
 	Element
@@ -58,40 +64,40 @@ type Narrative struct {
 type Extension struct {
 	URL                  *URI             `json:"url,omitempty"`
 	ValueInteger         *Integer         `json:"valueInteger,omitempty"`
+	ValueUnsignedInt     *UnsignedInt     `json:"valueUnsignedInt,omitempty"`
+	ValuePositiveInt     *PositiveInt     `json:"valuePositiveInt,omitempty"`
 	ValueDecimal         *Decimal         `json:"valueDecimal,omitempty"`
 	ValueDateTime        *DateTime        `json:"valueDateTime,omitempty"`
 	ValueDate            *Date            `json:"valueDate,omitempty"`
+	ValueTime            *Time            `json:"valueTime,omitempty"`
 	ValueInstant         *Instant         `json:"valueInstant,omitempty"`
 	ValueString          *String          `json:"valueString,omitempty"`
 	ValueURI             *URI             `json:"valueUri,omitempty"`
+	ValueOID             *OID             `json:"valueOid,omitempty"`
+	ValueUUID            *UUID            `json:"valueUuid,omitempty"`
+	ValueID              *ID              `json:"valueId,omitempty"`
 	ValueBoolean         *Boolean         `json:"valueBoolean,omitempty"`
 	ValueCode            *Code            `json:"valueCode,omitempty"`
+	ValueMarkdown        *Markdown        `json:"valueMarkdown,omitempty"`
 	ValueBase64Binary    *Base64Binary    `json:"valueBase64Binary,omitempty"`
 	ValueCoding          *Coding          `json:"valueCoding,omitempty"`
 	ValueCodeableConcept *CodeableConcept `json:"valueCodeableConcept,omitempty"`
 	ValueAttachment      *Attachment      `json:"valueAttachment,omitempty"`
 	ValueIdentifier      *Identifier      `json:"valueIdentifier,omitempty"`
 	ValueQuantity        *Quantity        `json:"valueQuantity,omitempty"`
+	ValueSampledData     *SampledData     `json:"valueSampledData,omitempty"`
 	ValueRange           *Range           `json:"valueRange,omitempty"`
 	ValuePeriod          *Period          `json:"valuePeriod,omitempty"`
 	ValueRatio           *Ratio           `json:"valueRatio,omitempty"`
 	ValueHumanName       *HumanName       `json:"valueHumanName,omitempty"`
 	ValueAddress         *Address         `json:"valueAddress,omitempty"`
 	ValueContactPoint    *ContactPoint    `json:"valueContactPoint,omitempty"`
-	ValueSchedule        *Schedule        `json:"valueSchedule,omitempty"`
+	ValueTiming          *Timing          `json:"valueTiming,omitempty"`
+	ValueSchedule        interface{}      `json:"valueSchedule,omitempty"`
 	ValueReference       *Reference       `json:"valueReference,omitempty"`
-}
-
-// Schedule FHIR type
-type Schedule struct {
-	Identifier      *Identifier       `json:"identifier,omitempty"`
-	Active          *Boolean          `json:"active,omitempty"`
-	ServiceCategory *CodeableConcept  `json:"serviceCategory,omitempty"`
-	ServiceType     []CodeableConcept `json:"serviceType,omitempty"`
-	Specialty       *CodeableConcept  `json:"specialty,omitempty"`
-	Actor           *Reference        `json:"actor,omitempty"`
-	PlanningHorizon *Period           `json:"planningHorizon,omitempty"`
-	Comment         *String           `json:"comment,omitempty"`
+	ValueAnnotation      *Annotation      `json:"valueAnnotation,omitempty"`
+	ValueSignature       *Signature       `json:"valueSignature,omitempty"`
+	ValueMeta            *Meta            `json:"valueMeta,omitempty"`
 }
 
 // // ElementDefinitionSlicingDiscriminator FHIR Sub-Type
