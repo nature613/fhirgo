@@ -30,19 +30,9 @@ type Meta struct {
 	Tag         []Coding `json:"tag,omitempty"`
 }
 
-// DoseAndRate FHIR Sub-type
-type DoseAndRate struct {
-	Type         *CodeableConcept `json:"type,omitempty"`
-	DoseRange    *Range           `json:"doseRange,omitempty"`
-	DoseQuantity *SimpleQuantity  `json:"doseQuantity,omitempty"`
-	RateRatio    *Ratio           `json:"rateRatio,omitempty"`
-	RateRange    *Range           `json:"rateRange,omitempty"`
-	RateQuantity *SimpleQuantity  `json:"rateQuantity,omitempty"`
-}
-
 // Dosage FHIR Type
 type Dosage struct {
-	BackboneElement
+	Element
 	Sequence                 *Integer          `json:"sequence,omitempty"`
 	Text                     *String           `json:"text,omitempty"`
 	AdditionalInstruction    []CodeableConcept `json:"additionalInstruction,omitempty"`
@@ -53,10 +43,14 @@ type Dosage struct {
 	Site                     *CodeableConcept  `json:"site,omitempty"`
 	Route                    *CodeableConcept  `json:"route,omitempty"`
 	Method                   *CodeableConcept  `json:"method,omitempty"`
-	DoseAndRate              []DoseAndRate     `json:"doseAndRate,omitempty"`
+	DoseRange                *Range            `json:"doseRange,omitempty"`
+	DoseQuantity             *SimpleQuantity   `json:"doseQuantity,omitempty"`
 	MaxDosePerPeriod         *Ratio            `json:"maxDosePerPeriod,omitempty"`
 	MaxDosePerAdministration *SimpleQuantity   `json:"maxDosePerAdministration,omitempty"`
 	MaxDosePerLifetime       *SimpleQuantity   `json:"maxDosePerLifetime,omitempty"`
+	RateRatio                *Ratio            `json:"rateRatio,omitempty"`
+	RateRange                *Range            `json:"rateRange,omitempty"`
+	RateQuantity             *SimpleQuantity   `json:"rateQuantity,omitempty"`
 }
 
 // Narrative for domain resource
@@ -99,6 +93,7 @@ type Extension struct {
 	ValueAddress         *Address         `json:"valueAddress,omitempty"`
 	ValueContactPoint    *ContactPoint    `json:"valueContactPoint,omitempty"`
 	ValueTiming          *Timing          `json:"valueTiming,omitempty"`
+	ValueSchedule        interface{}      `json:"valueSchedule,omitempty"`
 	ValueReference       *Reference       `json:"valueReference,omitempty"`
 	ValueAnnotation      *Annotation      `json:"valueAnnotation,omitempty"`
 	ValueSignature       *Signature       `json:"valueSignature,omitempty"`
