@@ -11,8 +11,8 @@ type Condition struct {
 	Identifier         []d.Identifier        `json:"identifier,omitempty"`
 	ClinicalStatus     *d.Code               `json:"clinicalStatus,omitempty"`
 	VerificationStatus *d.Code               `json:"verificationStatus,omitempty"`
-	Category           []d.Code              `json:"category,omitempty"`
-	Severity           *d.Code               `json:"severity,omitempty"`
+	Category           []d.CodeableConcept   `json:"category,omitempty"`
+	Severity           *d.CodeableConcept    `json:"severity,omitempty"`
 	Code               *d.CodeableConcept    `json:"code,omitempty"`
 	BodySite           *d.CodeableConcept    `json:"bodySite,omitempty"`
 	Subject            *d.Reference          `json:"subject,omitempty"`
