@@ -297,3 +297,39 @@ type RiskAssessmentPrediction struct {
 	WhenRange          *Range           `json:"whenRange,omitempty"`
 	Rationale          *String          `json:"rationale,omitempty"`
 }
+
+// ReferralRequestRequester subResource
+type ReferralRequestRequester struct {
+	Agent      *Reference `json:"agent,omitempty"`
+	OnBehalfOf *Reference `json:"onBehalfOf,omitempty"`
+}
+
+// ParametersParameter subResource
+type ParametersParameter struct {
+	Name                 *String          `json:"name,omitempty"`
+	ValueInteger         *Integer         `json:"valueInteger,omitempty"`
+	ValueDecimal         *Decimal         `json:"valueDecimal,omitempty"`
+	ValueDateTime        *DateTime        `json:"valueDateTime,omitempty"`
+	ValueDate            *Date            `json:"valueDate,omitempty"`
+	ValueInstant         *Instant         `json:"valueInstant,omitempty"`
+	ValueString          *String          `json:"valueString,omitempty"`
+	ValueURI             *URI             `json:"valueUri,omitempty"`
+	ValueBoolean         *Boolean         `json:"valueBoolean,omitempty"`
+	ValueCode            *Code            `json:"valueCode,omitempty"`
+	ValueBase64Binary    *Base64Binary    `json:"valueBase64Binary,omitempty"`
+	ValueCoding          *Coding          `json:"valueCoding,omitempty"`
+	ValueCodeableConcept *CodeableConcept `json:"valueCodeableConcept,omitempty"`
+	ValueAttachment      *Attachment      `json:"valueAttachment,omitempty"`
+	ValueIdentifier      *Identifier      `json:"valueIdentifier,omitempty"`
+	ValueQuantity        *Quantity        `json:"valueQuantity,omitempty"`
+	ValueRange           *Range           `json:"valueRange,omitempty"`
+	ValuePeriod          *Period          `json:"valuePeriod,omitempty"`
+	ValueRatio           *Ratio           `json:"valueRatio,omitempty"`
+	ValueHumanName       *HumanName       `json:"valueHumanName,omitempty"`
+	ValueAddress         *Address         `json:"valueAddress,omitempty"`
+	ValueContactPoint    *ContactPoint    `json:"valueContactPoint,omitempty"`
+	ValueSchedule        interface{}      `json:"valueSchedule,omitempty"`
+	ValueReference       *Reference       `json:"valueReference,omitempty"`
+	Resource             interface{}      `json:"resource,omitempty"`
+	Part                 interface{}      `json:"part,omitempty"`
+}
