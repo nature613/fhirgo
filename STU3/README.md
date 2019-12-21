@@ -4,7 +4,7 @@
 
 ### Level 5
 
-- [ ] [Binary](http://hl7.org/fhir/STU3/binary.html)
+- [x] [Binary](http://hl7.org/fhir/STU3/binary.html)
 - [x] [Bundle](http://hl7.org/fhir/STU3/bundle.html)
 - [ ] [CodeSystem](http://hl7.org/fhir/STU3/codesystem.html)
 - [x] [DomainResource](http://hl7.org/fhir/STU3/domainresource.html)
