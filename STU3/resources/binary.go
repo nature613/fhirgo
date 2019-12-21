@@ -8,9 +8,9 @@ import (
 // Binary resource
 type Binary struct {
     Base
-    ContentType     *d.Code         `json:"identifier,omitempty"`
-    SecurityContext *d.Reference    `json:"clinicalStatus,omitempty"`
-    Content         *d.Base64Binary `json:"type,omitempty"`
+    ContentType     *d.Code         `json:"contentType,omitempty"`
+    SecurityContext *d.Reference    `json:"securityContext,omitempty"`
+    Content         *d.Base64Binary `json:"content,omitempty"`
 }
 
 // Validate returns a check against schema

@@ -9,7 +9,7 @@
 - [ ] [CodeSystem](http://hl7.org/fhir/STU3/codesystem.html)
 - [x] [DomainResource](http://hl7.org/fhir/STU3/domainresource.html)
 - [x] [Observation](http://hl7.org/fhir/STU3/observation.html)
-- [ ] [OperationOutcome](http://hl7.org/fhir/STU3/operationoutcome.html)
+- [x] [OperationOutcome](http://hl7.org/fhir/STU3/operationoutcome.html)
 - [x] [Parameters](http://hl7.org/fhir/STU3/parameters.html)
 - [x] [Patient](http://hl7.org/fhir/STU3/patient.html)
 - [x] [Resource](http://hl7.org/fhir/STU3/resource.html)
