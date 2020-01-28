@@ -351,3 +351,17 @@ type PractitionerQualification struct {
     Period     *Period          `json:"period,omitempty"`
     Issuer     *Reference       `json:"issuer,omitempty"`
 }
+
+// PractitionerRoleAvailableTime sub-resource
+type PractitionerRoleAvailableTime struct {
+    DaysOfWeek         []Code   `json:"daysOfWeek,omitempty"`
+    AllDay             *Boolean `json:"allDay,omitempty"`
+    AvailableStartTime *Time    `json:"availableStartTime,omitempty"`
+    AvailableEndTime   *Time    `json:"availableEndTime,omitempty"`
+}
+
+// PractitionerRoleNotAvailable sub-resource
+type PractitionerRoleNotAvailable struct {
+    Description *String `json:"description,omitempty"`
+    During      *Period `json:"during,omitempty"`
+}
