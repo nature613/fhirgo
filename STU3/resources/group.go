@@ -15,7 +15,7 @@ type Group struct {
     Code           *d.CodeableConcept      `json:"code,omitempty"`
     Name           *d.String               `json:"name,omitempty"`
     Quantity       *d.UnsignedInt          `json:"quantity,omitempty"`
-    characteristic []d.GroupCharacteristic `json:"characteristic,omitempty"`
+    Characteristic []d.GroupCharacteristic `json:"characteristic,omitempty"`
     Member         []d.GroupMember         `json:"member,omitempty"`
 }
 

@@ -391,3 +391,10 @@ type GroupMember struct {
     Period   *Period    `json:"period,omitempty"`
     Inactive *Boolean   `json:"inactive,omitempty"`
 }
+
+// LocationPosition sub-resource
+type LocationPosition struct {
+    Longitude *Decimal `json:"longitude,omitempty"`
+    Latitude  *Decimal `json:"latitude,omitempty"`
+    Altitude  *Decimal `json:"altitude,omitempty"`
+}

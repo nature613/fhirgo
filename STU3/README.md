@@ -33,7 +33,7 @@
 - [ ] [DocumentReference](http://hl7.org/fhir/STU3/documentreference.html)
 - [ ] [ImagingStudy](http://hl7.org/fhir/STU3/imagingstudy.html)
 - [ ] [Immunization](http://hl7.org/fhir/STU3/immunization.html)
-- [ ] [Location](http://hl7.org/fhir/STU3/location.html)
+- [x] [Location](http://hl7.org/fhir/STU3/location.html)
 - [ ] [Medication](http://hl7.org/fhir/STU3/medication.html)
 - [ ] [MedicationRequest](http://hl7.org/fhir/STU3/medicationrequest.html)
 - [ ] [MedicationStatement](http://hl7.org/fhir/STU3/medicationstatement.html)
