@@ -365,3 +365,11 @@ type PractitionerRoleNotAvailable struct {
     Description *String `json:"description,omitempty"`
     During      *Period `json:"during,omitempty"`
 }
+
+// CareTeamParticipant sub-resource
+type CareTeamParticipant struct {
+    Role       *CodeableConcept `json:"role,omitempty"`
+    Member     *Reference       `json:"member,omitempty"`
+    OnBehalfOf *Reference       `json:"onBehalfOf,omitempty"`
+    Period     *Period          `json:"period,omitempty"`
+}
