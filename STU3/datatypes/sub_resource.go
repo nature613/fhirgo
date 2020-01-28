@@ -373,3 +373,21 @@ type CareTeamParticipant struct {
     OnBehalfOf *Reference       `json:"onBehalfOf,omitempty"`
     Period     *Period          `json:"period,omitempty"`
 }
+
+// GroupCharacteristic sub-resource
+type GroupCharacteristic struct {
+    Code                 *CodeableConcept `json:"code,omitempty"`
+    ValueCodeableConcept *CodeableConcept `json:"valueCodeableConcept,omitempty"`
+    ValueBoolean         *Boolean         `json:"valueBoolean,omitempty"`
+    ValueQuantity        *Quantity        `json:"valueQuantity,omitempty"`
+    ValueRange           *Range           `json:"valueRange,omitempty"`
+    Exclude              *Boolean         `json:"exclude,omitempty"`
+    Period               *Period          `json:"period,omitempty"`
+}
+
+// GroupMember sub-resource
+type GroupMember struct {
+    Entity   *Reference `json:"entity,omitempty"`
+    Period   *Period    `json:"period,omitempty"`
+    Inactive *Boolean   `json:"inactive,omitempty"`
+}

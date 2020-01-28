@@ -108,7 +108,7 @@
 - [ ] [DeviceComponent](http://hl7.org/fhir/STU3/devicecomponent.html)
 - [ ] [DeviceMetric](http://hl7.org/fhir/STU3/devicemetric.html)
 - [ ] [Flag](http://hl7.org/fhir/STU3/flag.html)
-- [ ] [Group](http://hl7.org/fhir/STU3/group.html)
+- [x] [Group](http://hl7.org/fhir/STU3/group.html)
 - [ ] [ImagingManifest](http://hl7.org/fhir/STU3/imagingmanifest.html)
 - [ ] [ImmunizationRecommendation](http://hl7.org/fhir/STU3/immunizationrecommendation.html)
 - [ ] [ImplementationGuide](http://hl7.org/fhir/STU3/implementationguide.html)
