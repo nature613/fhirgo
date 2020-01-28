@@ -5,6 +5,7 @@ import (
     "github.com/monarko/fhirgo/schema"
 )
 
+// Schedule resource
 type Schedule struct {
     Domain
     Identifier      []d.Identifier      `json:"identifier,omitempty"`

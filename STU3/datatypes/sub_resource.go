@@ -343,3 +343,11 @@ type OperationOutcomeIssue struct {
     Location    []String         `json:"location,omitempty"`
     Expression  []String         `json:"expression,omitempty"`
 }
+
+// PractitionerQualification sub-resource
+type PractitionerQualification struct {
+    Identifier []Identifier     `json:"identifier,omitempty"`
+    Code       *CodeableConcept `json:"code,omitempty"`
+    Period     *Period          `json:"period,omitempty"`
+    Issuer     *Reference       `json:"issuer,omitempty"`
+}
