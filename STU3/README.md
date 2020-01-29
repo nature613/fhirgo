@@ -53,7 +53,7 @@
 ### Level 2
 
 - [ ] [Account](http://hl7.org/fhir/STU3/account.html)
-- [ ] [ActivityDefinition](http://hl7.org/fhir/STU3/Activitydefinition.html)
+- [x] [ActivityDefinition](http://hl7.org/fhir/STU3/Activitydefinition.html)
 - [x] [CarePlan](http://hl7.org/fhir/STU3/careplan.html)
 - [x] [CareTeam](http://hl7.org/fhir/STU3/careteam.html)
 - [ ] [Claim](http://hl7.org/fhir/STU3/claim.html)

@@ -398,3 +398,17 @@ type LocationPosition struct {
     Latitude  *Decimal `json:"latitude,omitempty"`
     Altitude  *Decimal `json:"altitude,omitempty"`
 }
+
+// ActivityDefinitionParticipant sub-resource
+type ActivityDefinitionParticipant struct {
+    Type *Code            `json:"type,omitempty"`
+    Role *CodeableConcept `json:"role,omitempty"`
+}
+
+// ActivityDefinitionDynamicValue sub-resource
+type ActivityDefinitionDynamicValue struct {
+    Description *String `json:"description,omitempty"`
+    Path        *String `json:"path,omitempty"`
+    Language    *String `json:"language,omitempty"`
+    Expression  *String `json:"expression,omitempty"`
+}
