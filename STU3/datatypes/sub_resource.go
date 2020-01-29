@@ -481,3 +481,72 @@ type TaskOutput struct {
     ValueSchedule        interface{}      `json:"valueSchedule,omitempty"`
     ValueReference       *Reference       `json:"valueReference,omitempty"`
 }
+
+// PlanDefinitionGoal sub-resource
+type PlanDefinitionGoal struct {
+    Category      *CodeableConcept           `json:"category,omitempty"`
+    Description   *CodeableConcept           `json:"description,omitempty"`
+    Priority      *CodeableConcept           `json:"priority,omitempty"`
+    Start         *CodeableConcept           `json:"start,omitempty"`
+    Addresses     []CodeableConcept          `json:"addresses,omitempty"`
+    Documentation []RelatedArtifact          `json:"documentation,omitempty"`
+    Target        []PlanDefinitionGoalTarget `json:"target,omitempty"`
+}
+
+// PlanDefinitionGoalTarget sub-resource
+type PlanDefinitionGoalTarget struct {
+    Measure               *CodeableConcept `json:"measure,omitempty"`
+    DetailQuantity        *Quantity        `json:"detailQuantity,omitempty"`
+    DetailRange           *Range           `json:"detailRange,omitempty"`
+    DetailCodeableConcept *CodeableConcept `json:"detailCodeableConcept,omitempty"`
+    Due                   *Duration        `json:"due,omitempty"`
+}
+
+// PlanDefinitionAction sub-resource
+type PlanDefinitionAction struct {
+    Label               *String                             `json:"label,omitempty"`
+    Title               *String                             `json:"title,omitempty"`
+    Description         *String                             `json:"description,omitempty"`
+    TextEquivalent      *String                             `json:"textEquivalent,omitempty"`
+    Code                []CodeableConcept                   `json:"code,omitempty"`
+    Reason              []CodeableConcept                   `json:"reason,omitempty"`
+    Documentation       []RelatedArtifact                   `json:"documentation,omitempty"`
+    GoalId              []ID                                `json:"goalId,omitempty"`
+    TriggerDefinition   []TriggerDefinition                 `json:"triggerDefinition,omitempty"`
+    Condition           []PlanDefinitionActionCondition     `json:"condition,omitempty"`
+    Input               []DataRequirement                   `json:"input,omitempty"`
+    Output              []DataRequirement                   `json:"output,omitempty"`
+    RelatedAction       []PlanDefinitionActionRelatedAction `json:"relatedAction,omitempty"`
+    TimingDateTime      *DateTime                           `json:"timingDateTime,omitempty"`
+    TimingPeriod        *Period                             `json:"timingPeriod,omitempty"`
+    TimingDuration      *Duration                           `json:"timingDuration,omitempty"`
+    TimingRange         *Range                              `json:"timingRange,omitempty"`
+    TimingTiming        *Timing                             `json:"timingTiming,omitempty"`
+    Participant         []ActivityDefinitionParticipant     `json:"participant,omitempty"`
+    Type                *Coding                             `json:"type,omitempty"`
+    GroupingBehavior    *Code                               `json:"groupingBehavior,omitempty"`
+    SelectionBehavior   *Code                               `json:"selectionBehavior,omitempty"`
+    RequiredBehavior    *Code                               `json:"requiredBehavior,omitempty"`
+    PrecheckBehavior    *Code                               `json:"precheckBehavior,omitempty"`
+    CardinalityBehavior *Code                               `json:"cardinalityBehavior,omitempty"`
+    Definition          *Reference                          `json:"definition,omitempty"`
+    Transform           *Reference                          `json:"transform,omitempty"`
+    DynamicValue        []ActivityDefinitionDynamicValue    `json:"dynamicValue,omitempty"`
+    Action              interface{}                         `json:"action,omitempty"`
+}
+
+// PlanDefinitionActionCondition sub-resource
+type PlanDefinitionActionCondition struct {
+    Kind        *Code   `json:"kind,omitempty"`
+    Description *String `json:"description,omitempty"`
+    Language    *String `json:"language,omitempty"`
+    Expression  *String `json:"expression,omitempty"`
+}
+
+// PlanDefinitionActionRelatedAction sub-resource
+type PlanDefinitionActionRelatedAction struct {
+    ActionId       *ID       `json:"actionId,omitempty"`
+    Relationship   *Code     `json:"relationship,omitempty"`
+    OffsetDuration *Duration `json:"offsetDuration,omitempty"`
+    OffsetRange    *Range    `json:"offsetRange,omitempty"`
+}

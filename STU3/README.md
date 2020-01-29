@@ -84,7 +84,7 @@
 - [ ] [PaymentNotice](http://hl7.org/fhir/STU3/paymentnotice.html)
 - [ ] [PaymentReconciliation](http://hl7.org/fhir/STU3/paymentreconciliation.html)
 - [ ] [Person](http://hl7.org/fhir/STU3/person.html)
-- [ ] [PlanDefinition](http://hl7.org/fhir/STU3/plandefinition.html)
+- [x] [PlanDefinition](http://hl7.org/fhir/STU3/plandefinition.html)
 - [x] [PractitionerRole](http://hl7.org/fhir/STU3/practitionerrole.html)
 - [ ] [ProcessRequest](http://hl7.org/fhir/STU3/processrequest.html)
 - [ ] [ProcessResponse](http://hl7.org/fhir/STU3/processresponse.html)
