@@ -93,7 +93,7 @@
 - [x] [Specimen](http://hl7.org/fhir/STU3/specimen.html)
 - [ ] [StructureMap](http://hl7.org/fhir/STU3/structuremap.html)
 - [ ] [Substance](http://hl7.org/fhir/STU3/substance.html)
-- [ ] [Task](http://hl7.org/fhir/STU3/task.html)
+- [x] [Task](http://hl7.org/fhir/STU3/task.html)
 - [ ] [TestScript](http://hl7.org/fhir/STU3/testscript.html)
 
 ### Level 1
