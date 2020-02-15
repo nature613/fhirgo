@@ -1,10 +1,4 @@
-// Package resources provides all resources implementation of FHIR v4.0.0
+// Package resources provides all resources implementation of FHIR v3.0.2
 //
-// Reference: https://www.hl7.org/fhir/resourcelist.html
-/*
-Identification Individuals:
-	Patient
-	Practitioner
-	RelatedPerson
-*/
+// Reference: http://hl7.org/fhir/STU3/resourcelist.html
 package resources
