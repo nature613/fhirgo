@@ -138,3 +138,18 @@
 - [ ] [ResearchSubject](http://hl7.org/fhir/STU3/researchsubject.html)
 - [x] [ServiceDefinition](http://hl7.org/fhir/STU3/servicedefinition.html)
 - [ ] [TestReport](http://hl7.org/fhir/STU3/testreport.html)
+
+## Foundation
+
+|Conformance|Terminology|Security|Documents|Other|
+|-----------|-----------|--------|---------|-----|
+|CapabilityStatement|CodeSystem|Provenance|Composition|Basic|
+|StructureDefinition|ValueSet|AuditEvent|DocumentManifest|Binary|
+|ImplementationGuide|ConceptMap|Consent|DocumentReference|Bundle|
+|SearchParameter|ExpansionProfile|||Linkage|
+|MessageDefinition|NamingSystem|||Media|
+|OperationDefinition||||MessageHeader|
+|CompartmentDefinition||||OperationOutcome|
+|StructureMap||||Parameters|
+|GraphDefinition||||Subscription|
+|DataElement|||||
