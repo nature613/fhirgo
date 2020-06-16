@@ -9,7 +9,7 @@ import (
 type Task struct {
 	Domain
 	Identifier          []d.Identifier      `json:"identifier,omitempty"`
-	DefinitionUri       *d.URI              `json:"definitionUri,omitempty"`
+	DefinitionURI       *d.URI              `json:"definitionUri,omitempty"`
 	DefinitionReference *d.Reference        `json:"definitionReference,omitempty"`
 	BasedOn             []d.Reference       `json:"basedOn,omitempty"`
 	GroupIdentifier     *d.Identifier       `json:"groupIdentifier,omitempty"`
@@ -65,7 +65,7 @@ type TaskInputOutput struct {
 	ValueDate            *d.Date            `json:"valueDate,omitempty"`
 	ValueInstant         *d.Instant         `json:"valueInstant,omitempty"`
 	ValueString          *d.String          `json:"valueString,omitempty"`
-	ValueUri             *d.URI             `json:"valueUri,omitempty"`
+	ValueURI             *d.URI             `json:"valueUri,omitempty"`
 	ValueBoolean         *d.Boolean         `json:"valueBoolean,omitempty"`
 	ValueCode            *d.Code            `json:"valueCode,omitempty"`
 	ValueBase64Binary    *d.Base64Binary    `json:"valueBase64Binary,omitempty"`

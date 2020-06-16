@@ -70,7 +70,7 @@ type PlanDefinitionAction struct {
 	Code                []d.CodeableConcept                 `json:"code,omitempty"`
 	Reason              []d.CodeableConcept                 `json:"reason,omitempty"`
 	Documentation       []d.RelatedArtifact                 `json:"documentation,omitempty"`
-	GoalId              []d.ID                              `json:"goalId,omitempty"`
+	GoalID              []d.ID                              `json:"goalId,omitempty"`
 	TriggerDefinition   []d.TriggerDefinition               `json:"triggerDefinition,omitempty"`
 	Condition           []PlanDefinitionActionCondition     `json:"condition,omitempty"`
 	Input               []d.DataRequirement                 `json:"input,omitempty"`
@@ -104,7 +104,7 @@ type PlanDefinitionActionCondition struct {
 
 // PlanDefinitionActionRelatedAction sub-resource
 type PlanDefinitionActionRelatedAction struct {
-	ActionId       *d.ID       `json:"actionId,omitempty"`
+	ActionID       *d.ID       `json:"actionId,omitempty"`
 	Relationship   *d.Code     `json:"relationship,omitempty"`
 	OffsetDuration *d.Duration `json:"offsetDuration,omitempty"`
 	OffsetRange    *d.Range    `json:"offsetRange,omitempty"`
