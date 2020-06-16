@@ -139,9 +139,6 @@
 - [x] [ServiceDefinition](http://hl7.org/fhir/STU3/servicedefinition.html)
 - [ ] [TestReport](http://hl7.org/fhir/STU3/testreport.html)
 
-
-
-
 ## Foundation
 
 |Conformance|Terminology|Security|Documents|Other|
